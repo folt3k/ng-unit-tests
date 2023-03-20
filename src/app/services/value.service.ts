@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from "rxjs";
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +13,5 @@ export class ValueService {
 
   getValueObs$(): Observable<string> {
     return of('test');
-}
+  }
 }
