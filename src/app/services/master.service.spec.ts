@@ -17,7 +17,7 @@ describe('MasterService', () => {
           useValue: jasmine.createSpyObj('ValueService', [
             'getValue',
             'getValueObs$',
-          ]),
+          ]),	
         },
       ],
     });
