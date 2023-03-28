@@ -4,11 +4,17 @@ import { WelcomeComponent } from './welcome.component';
 import { MasterService } from '../../services/master.service';
 import { FormsModule } from '@angular/forms';
 
+// Serwis można zamockować poprzez klasę lub obiekt lub spy
+
 class MockMasterService {
   getMasterValue(): string {
     return 'foo';
   }
 }
+
+const masterServiceStub = {
+  getMasterValue: () => 'foo',
+};
 
 describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
@@ -21,7 +27,8 @@ describe('WelcomeComponent', () => {
       providers: [
         {
           provide: MasterService,
-          useClass: MockMasterService,
+          useValue: masterServiceStub,
+          // useClass: MockMasterService,
         },
       ],
       imports: [FormsModule],
@@ -47,6 +54,6 @@ describe('WelcomeComponent', () => {
 
     fixture.detectChanges();
 
-    expect(inputValueEl.textContent).toContain('foo');
+    expect(inputValueEl.textContent).toMatch(/foo/i);
   });
 });
