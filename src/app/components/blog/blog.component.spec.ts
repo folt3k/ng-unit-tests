@@ -9,6 +9,7 @@ import {
 import { BlogComponent } from './blog.component';
 import { BlogService } from '../../services/blog.service';
 import { delay, of } from 'rxjs';
+import { cold, getTestScheduler } from 'jasmine-marbles';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
@@ -65,5 +66,19 @@ describe('BlogComponent', () => {
       fixture.detectChanges();
       expect(fixture.nativeElement.textContent).toMatch(/foo/i);
     });
+  }));
+
+  it('should render article title - fakeAsync test with jasmine-marbles', fakeAsync(() => {
+    blogServiceSpy.getArticle$.and.returnValue(
+      of({ title: 'foo' }).pipe(delay(1000))
+    );
+
+    fixture.detectChanges();
+
+    tick(1000);
+
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toMatch(/foo/i);
   }));
 });
