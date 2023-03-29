@@ -8,6 +8,7 @@ import { MasterService } from '../../services/master.service';
 })
 export class WelcomeComponent implements OnInit {
   value = '';
+  inputValue = '';
 
   constructor(private masterService: MasterService) {}
 
