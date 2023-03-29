@@ -68,17 +68,17 @@ describe('BlogComponent', () => {
     });
   }));
 
-  it('should render article title - fakeAsync test with jasmine-marbles', fakeAsync(() => {
+  it('should render article title - jasmine-marbles test', () => {
     blogServiceSpy.getArticle$.and.returnValue(
-      of({ title: 'foo' }).pipe(delay(1000))
+      cold('---x|', { x: { title: 'foo' } })
     );
 
     fixture.detectChanges();
 
-    tick(1000);
+    getTestScheduler().flush();
 
     fixture.detectChanges();
 
     expect(fixture.nativeElement.textContent).toMatch(/foo/i);
-  }));
+  });
 });
