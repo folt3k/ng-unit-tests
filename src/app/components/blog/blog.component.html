@@ -1,1 +1,3 @@
+<h1>{{ title | uppercase }}</h1>
 {{ (blogService.getArticle$() | async)?.title }}
+<button (click)="loadMore.emit(page)">Load more</button>

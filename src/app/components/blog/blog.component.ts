@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { BlogService } from '../../services/blog.service';
 
 @Component({
@@ -7,5 +8,10 @@ import { BlogService } from '../../services/blog.service';
   styleUrls: ['./blog.component.scss'],
 })
 export class BlogComponent {
+  @Input() title = '';
+  @Output() loadMore = new EventEmitter<number>();
+
+  private page = 2;
+
   constructor(public blogService: BlogService) {}
 }

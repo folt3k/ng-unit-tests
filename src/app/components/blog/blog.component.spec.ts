@@ -81,4 +81,22 @@ describe('BlogComponent', () => {
 
     expect(fixture.nativeElement.textContent).toMatch(/foo/i);
   });
+
+  it('should render blog title', () => {
+    component.title = 'foo';
+
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('h1').textContent).toContain(
+      'FOO'
+    );
+  });
+
+  it('should emit load more event on click "Load more" button', () => {
+    spyOn(component.loadMore, 'emit');
+
+    fixture.nativeElement.querySelector('button').click();
+
+    expect(component.loadMore.emit).toHaveBeenCalledWith(2);
+  });
 });
