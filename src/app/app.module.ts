@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { FormsModule } from "@angular/forms";
 import { BlogComponent } from './components/blog/blog.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    BlogComponent
+    BlogComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
